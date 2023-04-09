@@ -133,8 +133,12 @@ body {
     margin-top: 40px;
 }
 
+.car-item-image:hover img {
+    transform: scale(1.1);
+}
 .car-item-image img {
     vertical-align: bottom;
+    transition: all .3s;
 }
 
 .car-item-title {
@@ -221,7 +225,7 @@ body {
     width: 100%;
 }
 
-.price-img {
+.price-image {
     position: absolute;
     bottom: 0;
     left: 401px;
