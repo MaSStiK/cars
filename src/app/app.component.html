@@ -1,0 +1,93 @@
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="Logo">
+    </div>
+    <nav class="menu">
+      <ul>
+        <li class="menu-item">
+          <a href="#">Главная</a>
+        </li>
+        <li class="menu-item">
+          <a href="#cars">Автомобили</a>
+        </li>
+        <li class="menu-item">
+          <a href="#price">Бронирование авто</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="main" [ngStyle]="bgPos">
+  <div class="container">
+    <div class="main-info">
+      <h1 class="main-title">Аренда премиальных автомобилей</h1>
+      <div class="main-text">В нашем клубе имеется солидная коллекция спортивных автомобилей — от достаточно
+        распространенных серийных машин до настоящего гоночного эксклюзива. Воспользуйтесь уникальной
+        возможностью побывать за рулем настоящей легенды и узнать, на что она способна за пределами гоночной
+        трассы!
+      </div>
+      <div class="main-action">
+        <button class="button" id="main-action" (click)="goScroll(cars)">Посмотреть автомобили</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="car" id="cars" #cars>
+  <div class="container">
+    <h2 class="sub-title">Наш автопарк</h2>
+    <div class="car-items">
+      <div class="car-item" *ngFor="let car of carsData">
+        <div class="car-item-image">
+          <img src="{{car.image}}" alt="Image">
+        </div>
+        <div class="car-item-title">{{car.name}}</div>
+        <div class="card-item-info">
+          <div class="car-item-point">
+            <img src="assets/images/gear.png" alt="Gear">
+            <div>Привод</div>
+            <div>{{car.gear}}</div>
+          </div>
+          <div class="car-item-point">
+            <img src="assets/images/wheel.png" alt="Wheel">
+            <div>Двигатель</div>
+            <div>{{car.engine}} л.с</div>
+          </div>
+          <div class="car-item-point">
+            <img src="assets/images/belt.png" alt="Belt">
+            <div>Кол-во мест</div>
+            <div>{{car.places}}</div>
+          </div>
+        </div>
+        <div class="car-item-action">
+          <button class="button car-button" (click)="goScroll(price, car)">Забронировать</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="price" id="price" #price>
+  <div class="container">
+    <h2 class="sub-title">Узнать цену забронировать</h2>
+    <div class="price-text">Заполните данные, и мы перезвоним вам для уточнения всех деталей бронирования</div>
+    <form action="" class="price-form" [formGroup]="priceForm">
+      <input type="text" class="price-input" placeholder="Ваше имя" formControlName="name">
+      <input type="text" class="price-input" placeholder="Ваше телефон" formControlName="phone">
+      <input type="text" class="price-input" placeholder="Автомобиль, который вас интересует" formControlName="car">
+      <button class="button" type="button" id="price-action" (click)="onSubmit()" [disabled]="!priceForm.valid">Узнать цену</button>
+    </form>
+    <img src="assets/images/rolls.png" alt="Rolls" class="price-image" [ngStyle]="trans">
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="logo">
+      <img src="assets/images/logo.png" alt="Logo">
+    </div>
+    <div class="rights">Все права защищены</div>
+  </div>
+</footer>
