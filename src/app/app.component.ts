@@ -20,7 +20,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.appService.getData().subscribe(carsData => this.carsData = carsData)
+    this.appService.getData(this.category).subscribe(carsData => this.carsData = carsData);
   }
 
 
@@ -31,15 +31,19 @@ export class AppComponent {
     }
   }
 
-  trans: any;
+  category: string = 'sport';
+  toggleCategory(category: string) {
+    this.category = category;
+    this.ngOnInit();
+  }
 
+  trans: any;
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(e: MouseEvent) {
     this.trans = {transform: 'translate3d(' + ((e.clientX * -0.1) / 8) + 'px,' + ((e.clientY * -0.1) / 8) + 'px,0px)'};
   }
 
   bgPos: any;
-
   @HostListener('document:scroll', ['$event'])
   onScroll() {
     this.bgPos = {backgroundPositionX: '0' + (0.2 * window.scrollY) + 'px'};
